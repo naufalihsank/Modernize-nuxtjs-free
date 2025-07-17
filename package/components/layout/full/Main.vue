@@ -9,16 +9,14 @@ const sDrawer = ref(true);
 <template>
   <!------Sidebar-------->
   <v-navigation-drawer
-    left
     elevation="0"
-    app
     class="leftSidebar"
     v-model="sDrawer"
     width="270"
   >
     <!---Logo part -->
     <div class="pa-5">
-      <LayoutFullLogo />
+      <img src="/images/logos/logo_text.png" alt="Logo" style="width: 150px" />
     </div>
     <!-- ---------------------------------------------- -->
     <!---Navigation -->

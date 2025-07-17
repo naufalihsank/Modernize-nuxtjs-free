@@ -16,7 +16,6 @@ useHead({
 
 <template>
   <v-locale-provider>
-    <Topbar />
     <v-app>
       <LayoutFullMain />
       <v-main>

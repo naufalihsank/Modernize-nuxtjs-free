@@ -105,7 +105,4 @@ const desserts = ref([
             </UiChildCard>
         </v-col>
     </v-row>
-
-
-    
 </template>

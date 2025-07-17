@@ -64,6 +64,9 @@ import {
   UserShieldIcon,
   ZoomCodeIcon,
 } from "vue-tabler-icons";
+
+import { IconFiles, IconUsersPlus, IconHierarchy3 } from "@tabler/icons-vue";
+
 export interface menu {
   header?: string;
   title?: string;
@@ -81,29 +84,49 @@ export interface menu {
 }
 
 const sidebarItem: menu[] = [
-  { header: "Home" },
+  { header: "All Features" },
   {
     title: "Dashboard",
     icon: LayoutDashboardIcon,
     to: "/",
     external: false,
   },
+  //////////////////////////////
   {
-    title: "Modern",
-    icon: ApertureIcon,
-    chip: "Pro",
-
-    to: "https://modernize-nuxt.adminmart.com/dashboards/modern",
-    external: true,
+    title: "Administrations",
+    icon: IconFiles,
+    to: "/administrations",
+    external: false,
   },
+  // {
+  //   title: "Registration",
+  //   icon: IconUsersPlus,
+  //   to: "/",
+  //   external: false,
+  // },
   {
-    title: "eCommerce",
-    icon: ShoppingCartIcon,
-    chip: "Pro",
-
-    to: "https://modernize-nuxt.adminmart.com/dashboards/ecommerce",
-    external: true,
+    title: "Role Manager",
+    icon: IconHierarchy3,
+    to: "/role-manager",
+    external: false,
   },
+  //////////////////////
+  // {
+  //   title: "Modern",
+  //   icon: ApertureIcon,
+  //   chip: "Pro",
+
+  //   to: "https://modernize-nuxt.adminmart.com/dashboards/modern",
+  //   external: true,
+  // },
+  // {
+  //   title: "eCommerce",
+  //   icon: ShoppingCartIcon,
+  //   chip: "Pro",
+
+  //   to: "https://modernize-nuxt.adminmart.com/dashboards/ecommerce",
+  //   external: true,
+  // },
   {
     title: "Front Pages",
     icon: AppWindowIcon,

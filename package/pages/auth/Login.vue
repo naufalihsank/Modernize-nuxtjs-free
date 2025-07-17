@@ -29,3 +29,7 @@ definePageMeta({
         </v-container>
     </div>
 </template>
+
+function definePageMeta(arg0: { layout: string; }) {
+  throw new Error("Function not implemented.");
+}

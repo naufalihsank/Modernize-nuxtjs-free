@@ -998,12 +998,12 @@ const sidebarItem: menu[] = [
   // },
 
   { header: "auth" },
-  // {
-  //   title: "Login",
-  //   icon: LoginIcon,
-  //   to: "/auth/login",
-  //   external: false,
-  // },
+  {
+    title: "Login",
+    icon: LoginIcon,
+    to: "/auth/login",
+    external: false,
+  },
   {
     title: "Register",
     icon: UserPlusIcon,

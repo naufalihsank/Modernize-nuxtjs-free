@@ -1,107 +1,96 @@
-<script setup>
-import { ref } from "vue";
-import UiChildCard from "@/components/shared/UiChildCard.vue";
-const desserts = ref([
+<script setup lang="ts">
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+const files = [
   {
-    name: "Frozen Yogurt",
-    calories: 159,
+    name: "api-docs.md",
+    slug: "api-docs",
+    lastModified: "2024-07-10",
+    size: "12 KB",
+    status: "Published",
+    statusColor: "success",
   },
   {
-    name: "Ice cream sandwich",
-    calories: 237,
+    name: "setup-guide.md",
+    slug: "setup-guide",
+    lastModified: "2024-07-08",
+    size: "8 KB",
+    status: "Draft",
+    statusColor: "warning",
   },
   {
-    name: "Eclair",
-    calories: 262,
+    name: "changelog.md",
+    slug: "changelog",
+    lastModified: "2024-06-25",
+    size: "5 KB",
+    status: "Archived",
+    statusColor: "grey",
   },
   {
-    name: "Cupcake",
-    calories: 305,
+    name: "admin-rules.md",
+    slug: "admin-rules",
+    lastModified: "2024-05-14",
+    size: "20 KB",
+    status: "Published",
+    statusColor: "success",
   },
-  {
-    name: "Gingerbread",
-    calories: 356,
-  },
-  {
-    name: "Jelly bean",
-    calories: 375,
-  },
-  {
-    name: "Lollipop",
-    calories: 392,
-  },
-  {
-    name: "Honeycomb",
-    calories: 408,
-  },
-  {
-    name: "Donut",
-    calories: 452,
-  },
-  {
-    name: "KitKat",
-    calories: 518,
-  },
-]);
+];
+
+const goToDetail = (slug: string) => {
+  router.push(`/administrations/${slug}`);
+};
+
+const editFile = (slug: string) => {
+  alert(`Edit: ${slug}`);
+};
 </script>
 
 <template>
-  <v-row class="month-table">
-    <v-col cols="12" sm="12">
-      <UiChildCard title="General Table">
-        <v-table>
-          <thead>
-            <tr>
-              <th class="text-left">Name</th>
-              <th class="text-left">Calories</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in desserts" :key="item.name">
-              <td>{{ item.name }}</td>
-              <td>{{ item.calories }}</td>
-            </tr>
-          </tbody>
-        </v-table>
-      </UiChildCard>
-    </v-col>
+  <v-container>
+    <div class="mb-6">
+      <h1 class="text-h4">Administration Files</h1>
+      <p class="text-subtitle-1 text-grey-darken-1">
+        Manage and maintain important system markdown files. View details,
+        update content, and track status.
+      </p>
+    </div>
 
-    <v-col cols="12" sm="12">
-      <UiChildCard title="Dark Table">
-        <v-table theme="dark">
-          <thead>
-            <tr>
-              <th class="text-left">Name</th>
-              <th class="text-left">Calories</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in desserts" :key="item.name">
-              <td>{{ item.name }}</td>
-              <td>{{ item.calories }}</td>
-            </tr>
-          </tbody>
-        </v-table>
-      </UiChildCard>
-    </v-col>
-
-    <v-col cols="12" sm="12">
-      <UiChildCard title="Header Fixed Table">
-        <v-table fixed-header height="300px">
-          <thead>
-            <tr>
-              <th class="text-left">Name</th>
-              <th class="text-left">Calories</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in desserts" :key="item.name">
-              <td>{{ item.name }}</td>
-              <td>{{ item.calories }}</td>
-            </tr>
-          </tbody>
-        </v-table>
-      </UiChildCard>
-    </v-col>
-  </v-row>
+    <v-table>
+      <thead>
+        <tr>
+          <th>File Name</th>
+          <th>Last Modified</th>
+          <th>Size</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="file in files" :key="file.slug">
+          <td>{{ file.name }}</td>
+          <td>{{ file.lastModified }}</td>
+          <td>{{ file.size }}</td>
+          <td>
+            <v-chip size="small" :color="file.statusColor" text-color="white">
+              {{ file.status }}
+            </v-chip>
+          </td>
+          <td>
+            <v-btn color="primary" size="small" @click="goToDetail(file.slug)">
+              Detail
+            </v-btn>
+            <v-btn
+              color="secondary"
+              size="small"
+              class="ml-2"
+              @click="editFile(file.slug)"
+            >
+              Edit
+            </v-btn>
+          </td>
+        </tr>
+      </tbody>
+    </v-table>
+  </v-container>
 </template>

@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useTheme } from "vuetify";
+
 const theme = useTheme();
 const primary = theme.current.value.colors.primary;
 const lightprimary = theme.current.value.colors.lightprimary;
+
 const chartOptions = computed(() => {
   return {
-    labels: ["series-1", "series-2", "series-3"],
+    labels: ["2024", "2025", "Other"],
     chart: {
       type: "donut",
       fontFamily: `inherit`,
@@ -39,24 +41,27 @@ const chartOptions = computed(() => {
     tooltip: { theme: "light", fillSeriesColor: false },
   };
 });
-const Chart = [38, 40, 25];
+
+// Dummy API call counts (in thousands)
+const Chart = [150, 165, 50];
 </script>
+
 <template>
   <v-card elevation="10" class="withbg">
     <v-card-item>
       <div class="d-sm-flex align-center justify-space-between pt-sm-2">
-        <v-card-title class="text-h5">Yearly Breakup</v-card-title>
+        <v-card-title class="text-h5">Yearly API Call Summary</v-card-title>
       </div>
       <v-row>
         <v-col cols="7" sm="7">
           <div class="mt-6">
-            <h3 class="text-h3">$36,358</h3>
+            <h3 class="text-h3">315K Calls</h3>
             <div class="mt-1">
               <v-avatar class="bg-lightsuccess text-success" size="25">
                 <ArrowUpLeftIcon size="20" />
               </v-avatar>
-              <span class="text-subtitle-1 ml-2 font-weight-bold">+9%</span>
-              <span class="text-subtitle-1 text-muted ml-2">last year</span>
+              <span class="text-subtitle-1 ml-2 font-weight-bold">+10%</span>
+              <span class="text-subtitle-1 text-muted ml-2">vs last year</span>
             </div>
             <div class="d-flex align-center mt-sm-10 mt-8">
               <h6 class="text-subtitle-1 text-muted">
@@ -88,8 +93,7 @@ const Chart = [38, 40, 25];
               height="145"
               :options="chartOptions"
               :series="Chart"
-            >
-            </apexchart>
+            />
           </div>
         </v-col>
       </v-row>

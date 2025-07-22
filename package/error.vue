@@ -5,8 +5,8 @@ useHead({
   meta: [{ content: title }],
   titleTemplate: (titleChunk) => {
     return titleChunk
-      ? `${titleChunk} - 404-Page Not Found`
-      : "Modernize - Nuxt3 Typescript based Free Admin Dashboard Template";
+      ? `${titleChunk} - 404 Page Not Found`
+      : "Catalyst AI";
   },
 });
 </script>

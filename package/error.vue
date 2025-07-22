@@ -5,7 +5,7 @@ useHead({
   meta: [{ content: title }],
   titleTemplate: (titleChunk) => {
     return titleChunk
-      ? `${titleChunk} - 404-Page Not Found`
+      ? `${titleChunk} - 404 Page Not Found`
       : "Catalyst AI";
   },
 });

@@ -1,10 +1,19 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 const name = ref("");
 const telegramId = ref("");
 const email = ref("");
 const password = ref("");
+
+const router = useRouter();
+
+function handleRegister() {
+  localStorage.setItem("token", "dummy_token_value");
+
+  router.push("/");
+}
 </script>
 
 <template>
@@ -52,7 +61,10 @@ const password = ref("");
       />
     </v-col>
     <v-col cols="12">
-      <v-btn to="/" color="primary" size="large" block flat> Sign up </v-btn>
+      <v-btn @click="handleRegister" color="primary" size="large" block flat>
+        Sign up
+      </v-btn>
     </v-col>
   </v-row>
 </template>
+s

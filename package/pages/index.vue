@@ -6,7 +6,18 @@ import MonthlyEarning from "@/components/dashboard/MonthlyEarnings.vue";
 import RecentTransaction from "@/components/dashboard/RecentTransaction.vue";
 import ProductPerformance from "@/components/dashboard/ProductPerformance.vue";
 import ProductCards from "@/components/dashboard/ProductCards.vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+onMounted(() => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    router.push("/auth/login");
+  }
+});
 </script>
+
 <template>
   <v-row>
     <v-col cols="12">

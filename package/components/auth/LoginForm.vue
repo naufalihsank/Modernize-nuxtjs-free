@@ -1,9 +1,22 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 const checkbox = ref(true);
 const telegramId = ref("");
 const password = ref("");
+
+const router = useRouter();
+
+function handleLogin() {
+  localStorage.setItem("token", "dummy_token_value");
+
+  if (checkbox.value) {
+    console.log("Remember device: yes");
+  }
+
+  router.push("/");
+}
 </script>
 
 <template>
@@ -47,7 +60,9 @@ const password = ref("");
       </div>
     </v-col>
     <v-col cols="12" class="pt-0">
-      <v-btn to="/" color="primary" size="large" block flat> Sign in </v-btn>
+      <v-btn @click="handleLogin" color="primary" size="large" block flat>
+        Sign in
+      </v-btn>
     </v-col>
   </v-row>
 </template>

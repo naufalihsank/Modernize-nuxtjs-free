@@ -35,7 +35,7 @@ function handleRegister() {
         variant="outlined"
         hide-details
         color="primary"
-        placeholder="Enter your Telegram ID"
+        placeholder="Enter your NIK"
       />
     </v-col>
     <v-col cols="12">

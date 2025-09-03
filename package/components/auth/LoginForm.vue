@@ -20,27 +20,29 @@ export default {
   methods: {
 
 async handleLogin() {
-  /* localStorage.setItem("token", "dummy_token_value");
-
-  if (checkbox.value) {
-    console.log("Remember device: yes");
-  }
-
-  router.push("/"); */
   try {
-    const response = await axios.post("https://your-api.com/login", {
+    const response = await axios.post("https://cb580ea4c281.ngrok-free.app/api/login", {
       username: username.value,
       password: password.value,
     });
 
     // Save token from backend
-    localStorage.setItem("token", response.data.token);
+    // localStorage.setItem("token", response.data.token);
 
     // Optional: handle remember device
     if (checkbox.value) {
       console.log("Remember device: yes");
     }
 
+    if (response.data.success) {
+      localStorage.setItem('token', response.data.token)
+      if (checkbox.value) {
+        console.log('Remember device: yes')
+      }
+      router.push('/')
+    } else {
+      alert('Invalid credentials')
+    }
     router.push("/");
   } catch (error) {
     console.error("Login failed:", error);

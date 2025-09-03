@@ -1,21 +1,53 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import axios from "axios";
 
 const checkbox = ref(true);
-const telegramId = ref("");
+const username = ref("");
 const password = ref("");
 
 const router = useRouter();
 
-function handleLogin() {
-  localStorage.setItem("token", "dummy_token_value");
+export default {
+  data() {
+    return {
+      checkbox: false,
+      username: "",
+      password: "",
+    };
+  },
+  methods: {
+
+async handleLogin() {
+  /* localStorage.setItem("token", "dummy_token_value");
 
   if (checkbox.value) {
     console.log("Remember device: yes");
   }
 
-  router.push("/");
+  router.push("/"); */
+  try {
+    const response = await axios.post("https://your-api.com/login", {
+      username: username.value,
+      password: password.value,
+    });
+
+    // Save token from backend
+    localStorage.setItem("token", response.data.token);
+
+    // Optional: handle remember device
+    if (checkbox.value) {
+      console.log("Remember device: yes");
+    }
+
+    router.push("/");
+  } catch (error) {
+    console.error("Login failed:", error);
+    alert("Invalid credentials");
+  }
+}
+  }
 }
 </script>
 
@@ -24,7 +56,7 @@ function handleLogin() {
     <v-col cols="12">
       <v-label class="font-weight-bold mb-1">NIK Telkom/ Username</v-label>
       <v-text-field
-        v-model="telegramId"
+        v-model="username"
         variant="outlined"
         hide-details
         color="primary"

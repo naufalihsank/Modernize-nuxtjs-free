@@ -22,7 +22,7 @@ function handleLogin() {
 <template>
   <v-row class="d-flex mb-3">
     <v-col cols="12">
-      <v-label class="font-weight-bold mb-1">Telegram ID</v-label>
+      <v-label class="font-weight-bold mb-1">NIK Telkom/ Username</v-label>
       <v-text-field
         v-model="telegramId"
         variant="outlined"

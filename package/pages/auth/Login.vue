@@ -27,7 +27,7 @@ definePageMeta({
                 />
               </div>
               <div class="text-body-1 text-muted text-center mb-3">
-                Sign in with your Telegram ID
+                Sign in with your Telkom NIK
               </div>
 
               <LoginForm />

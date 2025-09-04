@@ -998,7 +998,7 @@ const sidebarItem: menu[] = [
   // },
 
   { header: "auth" },
-  {
+  /* {
     title: "Login",
     icon: LoginIcon,
     to: "/auth/login",
@@ -1008,6 +1008,12 @@ const sidebarItem: menu[] = [
     title: "Register",
     icon: UserPlusIcon,
     to: "/auth/register",
+    external: false,
+  }, */
+  {
+    title: "User Profile",
+    icon: UserPlusIcon,
+    to: "/auth/profile",
     external: false,
   },
   // {

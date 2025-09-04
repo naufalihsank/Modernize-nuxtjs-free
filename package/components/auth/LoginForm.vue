@@ -3,52 +3,33 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 
-const checkbox = ref(true);
+const checkbox = ref(false);
 const username = ref("");
 const password = ref("");
 
 const router = useRouter();
 
-export default {
-  data() {
-    return {
-      checkbox: false,
-      username: "",
-      password: "",
-    };
-  },
-  methods: {
-
-async handleLogin() {
+async function handleLogin() {
   try {
     const response = await axios.post("https://cb580ea4c281.ngrok-free.app/api/login", {
       username: username.value,
       password: password.value,
     });
 
-    // Save token from backend
-    // localStorage.setItem("token", response.data.token);
-
-    // Optional: handle remember device
-    if (checkbox.value) {
-      console.log("Remember device: yes");
-    }
-
     if (response.data.success) {
-      localStorage.setItem('token', response.data.token)
+      localStorage.setItem("token", response.data.token);
+
       if (checkbox.value) {
-        console.log('Remember device: yes')
+        console.log("Remember device: yes");
       }
-      router.push('/')
+
+      router.push("/");
     } else {
-      alert('Invalid credentials')
+      alert("Invalid credentials");
     }
-    router.push("/");
   } catch (error) {
     console.error("Login failed:", error);
     alert("Invalid credentials");
-  }
-}
   }
 }
 </script>

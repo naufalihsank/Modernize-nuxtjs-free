@@ -1,8 +1,31 @@
 {
   "dependencies": {
-    "axios": "^1.11.0"
+    "axios": "^1.11.0",
+    "nuxt": "^4.1.0"
   },
   "devDependencies": {
     "@types/axios": "^0.9.36"
-  }
+  },
+  "name": "catalyst-ai",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">    <a href=\"https://adminmart.com/\" target=\"_blank\">       <img src=\"https://adminmart.github.io/template_api/images/brand-logo/adminmart-Logo.svg\" alt=\"sneat-logo\" width=\"100px\" height=\"100px\">    </a> </p> <h1 align=\"center\">    <a href=\"https://adminmart.com/product/modernize-free-nuxtjs-admin-dashboard/?ref=56\" target=\"_blank\" align=\"center\"> \t       Modernize Free NuxtJs Admin Dashboard Template    </a> </h1> <p>Download most useful and comprehensive 🚀 Free NuxtJs admin template built for developers </p>",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naufalihsank/catalyst-ai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/naufalihsank/catalyst-ai/issues"
+  },
+  "homepage": "https://github.com/naufalihsank/catalyst-ai#readme"
 }

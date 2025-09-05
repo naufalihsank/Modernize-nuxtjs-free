@@ -3,7 +3,7 @@ import { ref, shallowRef } from "vue";
 import sidebarItems from "@/components/layout/full/vertical-sidebar/sidebarItem";
 import { Menu2Icon } from "vue-tabler-icons";
 const sidebarMenu = shallowRef(sidebarItems);
-const sDrawer = ref(true);
+const sDrawer = ref(false);
 </script>
 
 <template>

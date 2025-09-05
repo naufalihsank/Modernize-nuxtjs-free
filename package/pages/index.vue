@@ -2,6 +2,7 @@
 /*Call Components*/
 import SalesOverview from "@/components/dashboard/SalesOverview.vue";
 import YearlyBreakup from "@/components/dashboard/YearlyBreakup.vue";
+import MonthlyRequests from "@/components/dashboard/MonthlyRequests.vue";
 import MonthlyEarning from "@/components/dashboard/MonthlyEarnings.vue";
 import RequestLog from "@/components/dashboard/RequestLog.vue";
 import MostActiveUsers from "@/components/dashboard/MostActiveUsers.vue";
@@ -96,7 +97,7 @@ function openTelegramBot() {
         <!-- Yearly Breakup / Monthly Earnings -->
         <v-col cols="12" lg="4">
           <div class="mb-6">
-            <YearlyBreakup />
+            <MonthlyRequests />
           </div>
           <div>
             <RequestLog />

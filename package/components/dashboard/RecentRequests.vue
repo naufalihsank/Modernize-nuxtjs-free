@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import axios from "axios";
-import { format } from "date-fns"; // optional, for formatting dates
+import { format, isToday, isYesterday } from "date-fns"; // optional, for formatting dates
 import { useRuntimeConfig } from 'nuxt/app';
 
 // Reactive array to hold recent requests
@@ -13,16 +13,28 @@ onMounted(async () => {
   try {
     const res = await axios.get(config.public.USER_API_URL + "/userapi/lastRequests");
     if (res.data.success) {
-      // Map the response to match the template structure
-      recentRequests.value = res.data.data.slice(0, 5).map((r: any, index: number) => ({
-        id: index + 1,
-        name: r.name || "Unknown",           // User full name
-        post: r.userMessage,                 // User message
-        pname: "",                            // Optional, can leave empty
-        status: "",                           // Optional, leave empty
-        statuscolor: "primary",               // You can vary colors if needed
-        budget: format(new Date(r.createdAt), "dd MMM yyyy H:mm"), // e.g., 02 Sep 2025 15:04
-      }));
+      recentRequests.value = res.data.data.slice(0, 5).map((r: any, index: number) => {
+        const createdDate = new Date(r.createdAt);
+        let displayDate = "";
+
+        if (isToday(createdDate)) {
+          displayDate = `today, ${format(createdDate, "H:mm")}`;
+        } else if (isYesterday(createdDate)) {
+          displayDate = `yesterday, ${format(createdDate, "H:mm")}`;
+        } else {
+          displayDate = format(createdDate, "d MMM, H:mm"); // e.g., 3 Sep, 19:20
+        }
+
+        return {
+          id: index + 1,
+          name: r.name || "Unknown",
+          post: r.userMessage,
+          pname: "",
+          status: "",
+          statuscolor: "primary",
+          budget: displayDate,
+        };
+      });
     }
   } catch (err) {
     console.error("Error fetching recent requests:", err);

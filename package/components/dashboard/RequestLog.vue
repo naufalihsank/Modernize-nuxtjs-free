@@ -84,7 +84,7 @@ onMounted(async () => {
                 <ArrowUpRightIcon size="20" />
               </v-avatar>
               <span class="text-subtitle-1 ml-2 font-weight-bold">+9%</span>
-              <span class="text-subtitle-1 text-muted ml-2">last month</span>
+              <span class="text-subtitle-1 text-muted ml-2">last week</span>
             </div>
           </div>
         </v-col>

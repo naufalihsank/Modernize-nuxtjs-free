@@ -3,7 +3,7 @@ import { ref, shallowRef } from "vue";
 import sidebarItems from "@/components/layout/full/vertical-sidebar/sidebarItem";
 import { Menu2Icon } from "vue-tabler-icons";
 const sidebarMenu = shallowRef(sidebarItems);
-const sDrawer = ref(false);
+const sDrawer = ref(true);
 
 </script>
 
@@ -14,6 +14,8 @@ const sDrawer = ref(false);
     class="leftSidebar"
     v-model="sDrawer"
     width="270"
+    :permanent="$vuetify.display.mdAndUp"
+    :temporary="$vuetify.display.smAndDown"
   >
     <!---Logo part -->
     <div class="pa-5">

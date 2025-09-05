@@ -1,9 +1,19 @@
 <script setup lang="ts">
-import { ref, shallowRef } from "vue";
+import { ref, shallowRef, onMounted } from "vue";
+import { useDisplay } from 'vuetify';
 import sidebarItems from "@/components/layout/full/vertical-sidebar/sidebarItem";
 import { Menu2Icon } from "vue-tabler-icons";
+
 const sidebarMenu = shallowRef(sidebarItems);
-const sDrawer = ref(true);
+
+// Get current display info
+const sDrawer = ref(true)
+const display = useDisplay()
+
+onMounted(() => {
+  console.log("mdAndUp value:", display.mdAndUp.value) // this is boolean
+  sDrawer.value = display.mdAndUp.value ? true : false
+})
 
 </script>
 
@@ -14,8 +24,8 @@ const sDrawer = ref(true);
     class="leftSidebar"
     v-model="sDrawer"
     width="270"
-    :permanent="$vuetify.display.mdAndUp"
-    :temporary="$vuetify.display.smAndDown"
+    :permanent="display.mdAndUp"
+    :temporary="!display.mdAndUp"
   >
     <!---Logo part -->
     <div class="pa-5">

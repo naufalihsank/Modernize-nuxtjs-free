@@ -7,6 +7,7 @@ const router = useRouter();
 
 function logout() {
   localStorage.removeItem("token");
+  localStorage.removeItem("employee");
 
   router.push("/auth/login");
 }

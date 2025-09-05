@@ -7,8 +7,15 @@ import RecentTransaction from "@/components/dashboard/RecentTransaction.vue";
 import ProductPerformance from "@/components/dashboard/ProductPerformance.vue";
 import ProductCards from "@/components/dashboard/ProductCards.vue";
 import { useRouter } from "vue-router";
+import { useState } from '#imports'
+import { watch } from 'vue'
+
 
 const router = useRouter();
+
+const flashAlert = useState<string | null>('flash-alert', () => null)
+const flashAlertClass = useState<string | null>('flash-alert-class', () => null)
+const showFlashAlert = ref(false)
 
 onMounted(() => {
   const token = localStorage.getItem("token");
@@ -16,15 +23,71 @@ onMounted(() => {
     router.push("/auth/login");
   }
 });
+
+watch(
+  flashAlert,
+  (val) => {
+    if (val) {
+      showFlashAlert.value = false
+      showFlashAlert.value = true
+
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+
+      // Automatically reset after showing once
+      setTimeout(() => {
+        flashAlert.value = null
+        flashAlertClass.value = null
+        showFlashAlert.value = false
+      }, 4000) // 4 seconds, adjust as needed
+    }
+  },
+  { immediate: true }
+)
+
+function openTelegramBot() {
+  const telegramAppUrl = "tg://resolve?domain=catalyst_TR3_bot"
+  const telegramWebUrl = "https://t.me/catalyst_TR3_bot"
+
+  // Try to open Telegram app first
+  const iframe = document.createElement("iframe")
+  iframe.style.display = "none"
+  iframe.src = telegramAppUrl
+  document.body.appendChild(iframe)
+
+  // If no Telegram app, fallback after 1s
+  setTimeout(() => {
+    window.open(telegramWebUrl, "_blank")
+    document.body.removeChild(iframe)
+  }, 1000)
+}
 </script>
 
 <template>
+<v-row>
+  <div v-if="showFlashAlert" :class="useState('flash-alert-class').value" class="mb-3 mt-6">
+    {{ useState('flash-alert').value }}
+  </div>
+</v-row>
   <v-row>
     <v-col cols="12">
       <v-row>
         <!-- Sales overview -->
         <v-col cols="12" lg="8">
-          <SalesOverview />
+        <v-card elevation="10" class="withbg">
+          <v-card-item class="d-flex flex-column align-center">
+            <v-card-title class="text-h5 text-center">
+              Akses Catalyst AI Bot
+            </v-card-title>
+            <div class="mt-6">
+              <img src="/images/logos/catalyst_ai.jpg" width="350" />
+            </div>
+            <div>
+                <v-btn block color="primary" variant="flat" size="large" @click="openTelegramBot">
+                    <BrandTelegramIcon class="w-6 h-6 mr-2" /> Go to Catalyst AI BOT
+                </v-btn>
+            </div>
+          </v-card-item>
+        </v-card>
         </v-col>
         <!-- Yearly Breakup / Monthly Earnings -->
         <v-col cols="12" lg="4">

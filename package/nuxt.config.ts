@@ -24,6 +24,12 @@ export default defineNuxtConfig({
 
   hooks: {
   },
+  runtimeConfig: {
+    public: {
+      USER_API_URL: process.env.USER_API_URL,
+      USER_API_SECRET: process.env.USER_API_SECRET
+    }
+  },
 
   compatibilityDate: "2025-04-15",
 })

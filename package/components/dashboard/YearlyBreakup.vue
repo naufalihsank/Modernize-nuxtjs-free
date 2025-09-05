@@ -8,7 +8,7 @@ const lightprimary = theme.current.value.colors.lightprimary;
 
 const chartOptions = computed(() => {
   return {
-    labels: ["2024", "2025", "Other"],
+    labels: ["August", "September"],
     chart: {
       type: "donut",
       fontFamily: `inherit`,
@@ -17,7 +17,7 @@ const chartOptions = computed(() => {
         show: false,
       },
     },
-    colors: [primary, lightprimary, "#F9F9FD"],
+    colors: [primary, lightprimary],
     plotOptions: {
       pie: {
         startAngle: 0,
@@ -50,7 +50,7 @@ const Chart = [150, 165, 50];
   <v-card elevation="10" class="withbg">
     <v-card-item>
       <div class="d-sm-flex align-center justify-space-between pt-sm-2">
-        <v-card-title class="text-h5">Yearly API Call Summary</v-card-title>
+        <v-card-title class="text-h5">Monthly Requests</v-card-title>
       </div>
       <v-row>
         <v-col cols="7" sm="7">
@@ -61,7 +61,7 @@ const Chart = [150, 165, 50];
                 <ArrowUpLeftIcon size="20" />
               </v-avatar>
               <span class="text-subtitle-1 ml-2 font-weight-bold">+10%</span>
-              <span class="text-subtitle-1 text-muted ml-2">vs last year</span>
+              <span class="text-subtitle-1 text-muted ml-2">vs last month</span>
             </div>
             <div class="d-flex align-center mt-sm-10 mt-8">
               <h6 class="text-subtitle-1 text-muted">
@@ -71,7 +71,7 @@ const Chart = [150, 165, 50];
                   size="10"
                   color="primary"
                 ></v-icon>
-                2024
+                August
               </h6>
               <h6 class="text-subtitle-1 text-muted pl-5">
                 <v-icon
@@ -80,7 +80,7 @@ const Chart = [150, 165, 50];
                   size="10"
                   color="lightprimary"
                 ></v-icon>
-                2025
+                September
               </h6>
             </div>
           </div>

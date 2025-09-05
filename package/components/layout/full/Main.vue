@@ -11,7 +11,6 @@ const sDrawer = ref(true)
 const display = useDisplay()
 
 onMounted(() => {
-  console.log("mdAndUp value:", display.mdAndUp.value) // this is boolean
   sDrawer.value = display.mdAndUp.value ? true : false
 })
 

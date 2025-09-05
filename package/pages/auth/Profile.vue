@@ -143,7 +143,7 @@ watch(
 <h1><UserIcon class="w-12 h-12 text-blue-500" /> User Profile</h1>
 <div v-if="showRedirectAlert" class="v-alert v-theme--PurpleTheme bg-error v-alert--density-default v-alert--variant-flat mb-3 mt-6">
     <AlertCircleIcon class="w-6 h-6 text-blue-500" />  
-    <span class="pl-2">Anda harus mengisi Username dan ID Telegram untuk dapat mengakses Catalyst AI.</span>
+    <span class="pl-2">Kamu harus mengisi Username dan ID Telegram untuk dapat mengakses Catalyst AI.</span>
 </div>
 
 <div v-if="showFlashAlert" :class="useState('flash-alert-class').value" class="mb-3 mt-6">
@@ -224,7 +224,7 @@ watch(
                 v-model="teleId"
             />
             </div>
-            <v-label class="font-weight-bold mb-1">Telegram Username</v-label>
+            <v-label class="font-weight-bold mb-1">Telegram Username (diawali @)</v-label>
             <div class="pa-3 rounded-lg bg-grey-lighten-4">
             <v-text-field
                 variant="outlined"

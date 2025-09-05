@@ -3,21 +3,25 @@
 import SalesOverview from "@/components/dashboard/SalesOverview.vue";
 import YearlyBreakup from "@/components/dashboard/YearlyBreakup.vue";
 import MonthlyEarning from "@/components/dashboard/MonthlyEarnings.vue";
+import RequestLog from "@/components/dashboard/RequestLog.vue";
+import MostActiveUsers from "@/components/dashboard/MostActiveUsers.vue";
 import RecentTransaction from "@/components/dashboard/RecentTransaction.vue";
+import RecentRequests from "@/components/dashboard/RecentRequests.vue";
 import ProductPerformance from "@/components/dashboard/ProductPerformance.vue";
 import ProductCards from "@/components/dashboard/ProductCards.vue";
 import { useRouter } from "vue-router";
 import { useState } from '#imports'
-import { watch } from 'vue'
-
+import { watch, ref, onMounted } from 'vue'
+import { useRuntimeConfig } from 'nuxt/app';
 
 const router = useRouter();
 
 const flashAlert = useState<string | null>('flash-alert', () => null)
 const flashAlertClass = useState<string | null>('flash-alert-class', () => null)
 const showFlashAlert = ref(false)
+const config = useRuntimeConfig()
 
-onMounted(() => {
+onMounted(async() => {
   const token = localStorage.getItem("token");
   if (!token) {
     router.push("/auth/login");
@@ -95,16 +99,16 @@ function openTelegramBot() {
             <YearlyBreakup />
           </div>
           <div>
-            <MonthlyEarning />
+            <RequestLog />
           </div>
         </v-col>
         <!-- Recent transaction -->
         <v-col cols="12" lg="4">
-          <RecentTransaction />
+          <MostActiveUsers />
         </v-col>
         <!-- Product performence -->
         <v-col cols="12" lg="8">
-          <ProductPerformance />
+          <RecentRequests />
         </v-col>
         <!-- Product Cards -->
         <!-- <v-col cols="12">
@@ -120,7 +124,7 @@ function openTelegramBot() {
           target="_blank"
           class="pl-1 text-primary"
         >
-          Ihsan Naufal K
+          Ihsan Naufal K Ganteng
         </a>
         &
         <a
